@@ -1,10 +1,10 @@
-public interface Queue {
+public interface Queue<T> {
 
-    boolean add(int val);
+    boolean add(T val);
 
-    Integer poll();
+    T poll();
 
-    Integer peak();
+    T peak();
 
     int size();
 }

@@ -1,6 +1,6 @@
-public class ArrayQueue implements Queue {
+public class ArrayQueue<T> implements Queue<T> {
 
-    private Integer[] data;
+    private T[] data;
     private int size;
 
     // data removed from this side --> [front....end] <-- data added from this side
@@ -12,7 +12,7 @@ public class ArrayQueue implements Queue {
 
     public ArrayQueue(int capacity) {
         if (capacity > 0) {
-            data = new Integer[capacity];
+            data = (T[]) new Object[capacity];
             front = 0;
             end = 0;
         }
@@ -20,18 +20,18 @@ public class ArrayQueue implements Queue {
     }
 
     @Override
-    public Integer poll() {
+    public T poll() {
         if (size == 0) {
             return null;
         }
-        int val = data[front];
+        T val = data[front];
         front = (front + 1) % data.length;
         size--;
         return val;
     }
 
     @Override
-    public boolean add(int val) {
+    public boolean add(T val) {
         if (data == null || data.length == 0 || size == data.length) {
             return false;
         }
@@ -42,7 +42,7 @@ public class ArrayQueue implements Queue {
     }
 
     @Override
-    public Integer peak() {
+    public T peak() {
         if (size <= 0) {
             return null;
         }

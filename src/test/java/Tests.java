@@ -1,28 +1,25 @@
 import org.junit.Test;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 import static org.junit.Assert.*;
 
 public class Tests {
     @Test
-    public void testEmptyQueue() {
-        ArrayQueue queue = new ArrayQueue(0);
+    public void testEmptyIntQueue() {
+        Queue<Integer> queue = new ArrayQueue<>(0);
         assertEquals(0, queue.size());
         assertNull(queue.poll());
         assertNull(queue.peak());
 
-        queue = new ArrayQueue(-1);
+        queue = new ArrayQueue<>(-1);
         assertEquals(0, queue.size());
         assertNull(queue.peak());
     }
 
     @Test
-    public void testNonEmptyQueueWithinCapacity() {
+    public void testNonEmptyIntQueueWithinCapacity() {
         for (int i = 1; i < 10; i++) {
             String caseId = String.format("case %d: ", i);
-            ArrayQueue queue = new ArrayQueue(i);
+            Queue<Integer> queue = new ArrayQueue<>(i);
             assertEquals(caseId, 0, queue.size());
             assertNull(caseId, queue.poll());
 
@@ -31,7 +28,7 @@ public class Tests {
                 assertTrue(caseId, queue.add(j));
                 assertEquals(caseId, j + 1, queue.size());
                 assertNotNull(caseId, queue.peak());
-                assertEquals(caseId, 0, queue.peak().intValue());
+                assertEquals(caseId, (Integer) 0, queue.peak());
             }
 
             // test emptying
@@ -39,7 +36,7 @@ public class Tests {
                 Integer val = queue.poll();
                 assertNotNull(val);
                 assertEquals(j, val.intValue());
-                if (queue.size()>0) {
+                if (queue.size() > 0) {
                     assertEquals(j + 1, queue.peak().intValue());
                 }
             }
@@ -47,8 +44,8 @@ public class Tests {
     }
 
     @Test
-    public void testQueueExceedingCapacity() {
-        ArrayQueue queue = new ArrayQueue(3);
+    public void testIntQueueExceedingCapacity() {
+        Queue<Integer> queue = new ArrayQueue<>(3);
         for (int j = 0; j < 3; j++) {
             queue.add(j);
         }
@@ -65,11 +62,21 @@ public class Tests {
     }
 
     @Test
-    public void useJavaQueue() {
-        Queue<Integer> javaQueue = new ArrayDeque<>();
-        for (int i = 0; i < 10; i++) {
-            javaQueue.add(i);
+    public void testStringQueueExceedingCapacity() {
+        Queue<String> queue = new ArrayQueue<>(4);
+        for (int j = 0; j < 4; j++) {
+            queue.add(String.valueOf(j));
         }
-        System.out.println(javaQueue);
+
+        // queue full, add should fail
+        String newVal = String.valueOf(99);
+        assertFalse(queue.add(newVal));
+
+        // pop one element
+        queue.poll();
+
+        // now add can succeed
+        assertTrue(queue.add(newVal));
+        assertEquals(String.valueOf(1), queue.peak());
     }
 }
