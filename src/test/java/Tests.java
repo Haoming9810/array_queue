@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 import static org.junit.Assert.*;
 
 public class Tests {
@@ -59,5 +62,14 @@ public class Tests {
         // now add can succeed
         assertTrue(queue.add(3));
         assertEquals(1, queue.peak().intValue());
+    }
+
+    @Test
+    public void useJavaQueue() {
+        Queue<Integer> javaQueue = new ArrayDeque<>();
+        for (int i = 0; i < 10; i++) {
+            javaQueue.add(i);
+        }
+        System.out.println(javaQueue);
     }
 }
