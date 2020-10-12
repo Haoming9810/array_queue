@@ -4,7 +4,7 @@ public interface Queue {
 
     Integer poll();
 
-    Integer peak();
+    Integer peek();
 
     int size();
 }
