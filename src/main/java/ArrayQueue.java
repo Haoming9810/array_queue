@@ -42,7 +42,7 @@ public class ArrayQueue<T> implements Queue<T> {
     }
 
     @Override
-    public T peak() {
+    public T peek() {
         if (size <= 0) {
             return null;
         }

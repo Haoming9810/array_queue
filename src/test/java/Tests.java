@@ -8,11 +8,11 @@ public class Tests {
         Queue<Integer> queue = new ArrayQueue<>(0);
         assertEquals(0, queue.size());
         assertNull(queue.poll());
-        assertNull(queue.peak());
+        assertNull(queue.peek());
 
         queue = new ArrayQueue<>(-1);
         assertEquals(0, queue.size());
-        assertNull(queue.peak());
+        assertNull(queue.peek());
     }
 
     @Test
@@ -27,8 +27,8 @@ public class Tests {
             for (int j = 0; j < i; j++) {
                 assertTrue(caseId, queue.add(j));
                 assertEquals(caseId, j + 1, queue.size());
-                assertNotNull(caseId, queue.peak());
-                assertEquals(caseId, (Integer) 0, queue.peak());
+                assertNotNull(caseId, queue.peek());
+                assertEquals(caseId, (Integer) 0, queue.peek());
             }
 
             // test emptying
@@ -37,7 +37,7 @@ public class Tests {
                 assertNotNull(val);
                 assertEquals(j, val.intValue());
                 if (queue.size() > 0) {
-                    assertEquals(j + 1, queue.peak().intValue());
+                    assertEquals(j + 1, queue.peek().intValue());
                 }
             }
         }
@@ -58,7 +58,7 @@ public class Tests {
 
         // now add can succeed
         assertTrue(queue.add(3));
-        assertEquals(1, queue.peak().intValue());
+        assertEquals(1, queue.peek().intValue());
     }
 
     @Test
@@ -77,6 +77,6 @@ public class Tests {
 
         // now add can succeed
         assertTrue(queue.add(newVal));
-        assertEquals(String.valueOf(1), queue.peak());
+        assertEquals(String.valueOf(1), queue.peek());
     }
 }
