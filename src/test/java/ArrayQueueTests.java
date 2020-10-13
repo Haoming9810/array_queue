@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Tests {
+public class ArrayQueueTests {
     @Test
     public void testEmptyIntQueue() {
         Queue<Integer> queue = new ArrayQueue<>(0);
