@@ -30,13 +30,13 @@ public class LinkedListQueueTests {
             // test emptying
             for (int j = 0; j < i; j++) {
                 Integer val = queue.poll();
-                assertNotNull(val);
-                assertEquals(j, val.intValue());
+                assertNotNull(caseId, val);
+                assertEquals(caseId, j, val.intValue());
                 if (queue.size() > 0) {
-                    assertEquals(j + 1, queue.peek().intValue());
+                    assertEquals(caseId, j + 1, queue.peek().intValue());
                 }
             }
-            assertEquals(0, queue.size());
+            assertEquals(caseId, 0, queue.size());
         }
     }
 }
