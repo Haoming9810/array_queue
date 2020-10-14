@@ -1,4 +1,4 @@
-public class SingleLinkedList<T> {
+public class SingleLinkedList<T> implements List<T> {
     private ListNode<T> head;
     private int size;
 
@@ -7,19 +7,23 @@ public class SingleLinkedList<T> {
         size = 0;
     }
 
-    int size() {
+    @Override
+    public int size() {
         return size;
     }
 
+    @Override
     public T getFirst() {
         return get(0);
     }
 
+    @Override
     public T getLast() {
         return get(size - 1);
     }
 
     // Returns the element at the specified position in this list
+    @Override
     public T get(int index) {
         if (index < 0 || index >= size) {
             return null;
@@ -35,6 +39,7 @@ public class SingleLinkedList<T> {
     }
 
     // Appends the specified element to the end of this list
+    @Override
     public void add(T val) {
         size++;
         ListNode<T> ptr = head;
@@ -45,6 +50,7 @@ public class SingleLinkedList<T> {
     }
 
     // Inserts the specified element at the beginning of this list
+    @Override
     public void addFirst(T val) {
         size++;
         ListNode<T> newNode = new ListNode<T>(val);
@@ -53,6 +59,7 @@ public class SingleLinkedList<T> {
     }
 
     // Removes and returns the first element from this list
+    @Override
     public void removeFirst() {
         if (head.next == null) {
             return;
@@ -62,6 +69,7 @@ public class SingleLinkedList<T> {
     }
 
     // Removes and returns the last element from this list
+    @Override
     public void removeLast() {
         if (head.next == null) {
             return;
