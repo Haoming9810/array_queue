@@ -24,7 +24,7 @@ public class ArrayQueue implements Queue {
         if (size == 0) {
             return null;
         }
-        int val = data[front];
+        Integer val = data[front];
         front = (front + 1) % data.length;
         size--;
         return val;
