@@ -1,6 +1,8 @@
 import org.junit.Test;
 
+import java.util.Map;
 import java.util.Stack;
+import java.util.TreeMap;
 
 public class TreeTests {
     public static void main(String[] args) {
@@ -16,6 +18,25 @@ public class TreeTests {
 
         printAllNodes(root);
 
+    }
+
+    @Test
+    public void useTreeMap() {
+        // key: name
+        // value: password
+        Map<String, String> tree = new TreeMap<>(); // a binary search tree, use key as node value
+        tree.put("Jerry", "xyz");
+        tree.put("Alex", "132");
+        tree.put("Sam", "abc");
+        tree.put("Ron", "def");
+        tree.put("Tim", "opq");
+        tree.put("Katie", "123");
+        tree.put("Joe", "789");
+
+        System.out.println(tree);
+
+        System.out.println(tree.containsKey("Alex"));
+        System.out.println(tree.containsKey("Andrew"));
     }
 
     private static void printAllNodes(TreeNode<String> node) {
