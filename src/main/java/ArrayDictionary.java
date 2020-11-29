@@ -1,5 +1,4 @@
 public class ArrayDictionary implements Dictionary {
-    private int count;
     private KVEntry[] entries;
 
     public ArrayDictionary(int capacity) {
@@ -12,8 +11,7 @@ public class ArrayDictionary implements Dictionary {
     }
 
     private int hashFunction(String key) {
-        // return key.hashCode() % entries.length;
-        return key.length() % entries.length;
+        return key.hashCode() % entries.length;
     }
 
     @Override
@@ -24,25 +22,21 @@ public class ArrayDictionary implements Dictionary {
         // when there's no entry yet
         if (entries[hashedKey] == null) {
             entries[hashedKey] = new KVEntry(key, value);
-            count++;
             return;
         }
 
         KVEntry ptr = entries[hashedKey];
-        KVEntry pNewNode = null;
-        while (ptr != null) {
+        while (ptr.next != null) {
             // update value if key already exists
-            if (ptr.key == key) {
+            if (ptr.key.equals(key)) {
                 ptr.value = value;
                 return;
             }
-            pNewNode = ptr;
             ptr = ptr.next;
         }
 
         // add an entry to the end of the chain
-        pNewNode.next = new KVEntry(key, value);
-        return;
+        ptr.next = new KVEntry(key, value);
     }
 
     @Override

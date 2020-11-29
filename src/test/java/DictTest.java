@@ -24,11 +24,17 @@ public class DictTest {
     }
 
     @Test
-    public void play() {
+    public void test1() {
         Dictionary dict = new ArrayDictionary(10);
-        dict.put("Alex", "12$%^");
-        dict.put("Ron", "%^&*");
-        dict.put("Sam", "4321()");
+
+        dict.put("Jerry", "467");
+        dict.put("Alex", "132");
+        dict.put("Sam", "234");
+        dict.put("Ron", "999");
+        dict.put("Tim", "012");
+        dict.put("Katie", "549");
+        dict.put("Joe", "333");
+
         System.out.println(dict);
     }
 }
